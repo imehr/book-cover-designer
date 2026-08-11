@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://book-cover-designer.dev/schemas/template.schema.json",
+  "title": "BookCoverTemplate",
+  "description": "A reusable book cover template: style spec + prompt program + optional reference images. A template folder contains template.json plus an optional references/ directory with the reference images it uses.",
+  "type": "object",
+  "required": ["id", "version", "name", "kind", "prompt"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$", "description": "Stable folder-name id." },
+    "version": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string" },
+    "kind": { "enum": ["type-only", "illustrated", "photographic", "hybrid"] },
+    "description": { "type": "string" },
+    "layout": {
+      "type": "object",
+      "description": "Deterministic cover composition (the parts the agent typesets live, outside the AI art).",
+      "properties": {
+        "composition": { "type": "string", "description": "Where title/author/art sit, e.g. 'title top block, art below', 'full-bleed art with bottom title band'." },
+        "margins": { "type": "string", "description": "Margin/grid rule, e.g. '10% safe zone, 4-col grid', 'Tschichold proportional margins'." },
+        "safeZone": { "type": "number", "minimum": 0, "maximum": 0.3, "description": "Fraction of each edge kept clear of critical text." }
+      },
+      "additionalProperties": true
+    },
+    "typography": {
+      "type": "object",
+      "description": "Typography direction for title/author/subtitle.",
+      "properties": {
+        "classification": { "type": "string", "description": "e.g. Didone, geometric sans, old-style serif, slab." },
+        "families": { "type": "array", "items": { "type": "string" }, "maxItems": 2 },
+        "hierarchy": { "type": "string", "description": "Scale note, e.g. 'title largest, subtitle secondary, author tertiary'." }
+      },
+      "additionalProperties": true
+    },
+    "palette": {
+      "type": "object",
+      "properties": {
+        "colors": { "type": "array", "items": { "type": "string" }, "description": "1-3 hues + neutrals." },
+        "contrast": { "type": "string", "description": "e.g. 'high contrast type on quiet background'." }
+      },
+      "additionalProperties": true
+    },
+    "prompt": {
+      "type": "object",
+      "required": ["art"],
+      "description": "Prompt program for the AI art stage. Placeholders {title}, {author}, {subtitle}, {subject}, {tone}, {genre} are substituted by the CLI.",
+      "properties": {
+        "art": { "type": "string", "description": "Art-generation prompt (text-free; final title/author is typeset live)." },
+        "negative": { "type": "string", "description": "Negative prompt / excluded elements." },
+        "roleRefs": { "type": "string", "description": "Instruction to the provider on how to treat reference images, e.g. 'use refs as style board: keep palette and texture, do not copy subjects'." }
+      },
+      "additionalProperties": true
+    },
+    "references": {
+      "type": "array",
+      "description": "Reference images shipped in the template's references/ dir. Roles follow the provider-matrix vocabulary.",
+      "items": {
+        "type": "object",
+        "required": ["file", "role"],
+        "properties": {
+          "file": { "type": "string", "description": "Relative path under references/." },
+          "role": { "enum": ["style", "composition", "subject", "identity", "palette", "material", "typography", "negative", "competitor-observation"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "provider": {
+      "type": "object",
+      "description": "Optional provider/model preference and output geometry.",
+      "properties": {
+        "preferred": { "type": "array", "items": { "type": "string" }, "description": "Preferred provider ids in order, e.g. ['openrouter','gemini','openai','xai']." },
+        "defaultModel": { "type": "string" },
+        "aspect": { "enum": ["1.6:1", "3:2", "4:3", "1:1", "2:3", "9:16"] },
+        "refsLimit": { "type": "integer", "description": "Max provider refs; degrade by truncating deterministically." }
+      },
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Who made this template and from what.",
+      "properties": {
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "source": { "type": "string", "description": "e.g. 'derived from cover collection X'." }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

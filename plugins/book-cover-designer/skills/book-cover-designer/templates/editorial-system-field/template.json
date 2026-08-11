@@ -1,0 +1,37 @@
+{
+  "id": "editorial-system-field",
+  "version": 1,
+  "name": "Editorial System Field",
+  "kind": "illustrated",
+  "description": "Upmarket nonfiction system cover: a restrained, systematic art field (grid, geometry, abstract structure) with a strong typographic title block. No characters, no stock-photo cliches.",
+  "layout": {
+    "composition": "Title block top-left on a modular 4-col grid; author bottom; art field occupies the lower ~60% full-bleed",
+    "margins": "10% safe zone all edges; title anchored to first grid column",
+    "safeZone": 0.1
+  },
+  "typography": {
+    "classification": "geometric sans",
+    "families": ["Inter", "Archivo"],
+    "hierarchy": "Title largest and tight-tracked, subtitle secondary, author tertiary at bottom"
+  },
+  "palette": {
+    "colors": ["ink black", "paper cream", "one accent hue"],
+    "contrast": "high contrast: near-black type on light field"
+  },
+  "prompt": {
+    "art": "Abstract editorial book cover artwork, no text. A systematic field of repeating geometric modules (rectangles, thin grid lines, halftone dots) forming a quiet but structured composition. Limestone-paper cream background, ink black and a single muted accent. A large calm negative space in the upper third reserved for a title. Convey {tone} through structure, not illustration. Genre: {genre}.",
+    "negative": "no text, no letters, no people, no hands, no skyline, no cliched stock imagery, no watermarks, no borders around the whole canvas",
+    "roleRefs": "Use the reference images as a style board: keep their palette, texture, and structural logic. Do not copy specific subjects or composition verbatim."
+  },
+  "references": [],
+  "provider": {
+    "preferred": ["openrouter", "gemini", "openai", "xai"],
+    "defaultModel": "openai/gpt-image-2",
+    "aspect": "1.6:1"
+  },
+  "provenance": {
+    "createdBy": "book-cover-designer skill",
+    "createdAt": "2026-08-11T00:00:00Z",
+    "source": "Derived from the Editorial System Field cover style in book-writer design/cover-templates"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "book-cover-designer",
+  "version": "1.0.0",
+  "description": "Design book covers like an advanced graphic designer — any genre, any retailer. Concept-first workflow (read-the-text, depiction plane, visual argument), modular grid, typography hierarchy, palette, reference-image templates, and per-retailer export (Amazon KDP, Google Books, Apple Books, print). Portable: works in Claude Code, Codex CLI/Desktop, Grok, OpenCode, Kimi, Ori via bundled CLI + MCP server.",
+  "author": {
+    "name": "Mehran Mozaffari",
+    "email": "mehran.mozaffari@gmail.com",
+    "url": "https://github.com/imehr"
+  },
+  "homepage": "https://github.com/imehr/book-cover-designer",
+  "repository": "https://github.com/imehr/book-cover-designer",
+  "license": "MIT",
+  "keywords": [
+    "book-cover",
+    "cover-design",
+    "typography",
+    "grid",
+    "image-generation",
+    "gemini",
+    "openrouter",
+    "openai",
+    "grok",
+    "xai",
+    "amazon-kdp",
+    "apple-books",
+    "google-books",
+    "print-cover",
+    "templates",
+    "mcp",
+    "reference-images",
+    "style-board"
+  ],
+  "interface": {
+    "displayName": "Book Cover Designer",
+    "shortDescription": "Design professional book covers — any genre, any retailer",
+    "longDescription": "Concept-first book cover design: read the text as a designer, choose a depiction plane, build a visual argument, then compose on a modular grid with disciplined typography. Generates candidates through whichever image provider is available (OpenRouter / OpenAI / xAI Grok / Gemini), supports reference-image style boards, saves reusable templates, and exports to Amazon KDP / Apple Books / Google Play Books / print specs.",
+    "developerName": "Mehran Mozaffari",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://github.com/imehr/book-cover-designer",
+    "defaultPrompt": [
+      "Design a book cover for my new book",
+      "Create a cover concept from these reference images",
+      "Generate cover candidates for an Amazon KDP launch"
+    ],
+    "brandColor": "#C2410C"
+  }
+}

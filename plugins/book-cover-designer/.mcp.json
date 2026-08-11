@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "book-cover-designer": {
+      "command": "node",
+      "args": [
+        "./skills/book-cover-designer/bin/mcp-server.mjs"
+      ]
+    }
+  }
+}

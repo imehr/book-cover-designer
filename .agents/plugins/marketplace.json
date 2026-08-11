@@ -1,0 +1,20 @@
+{
+  "name": "book-cover-designer",
+  "interface": {
+    "displayName": "Book Cover Designer"
+  },
+  "plugins": [
+    {
+      "name": "book-cover-designer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/book-cover-designer"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
