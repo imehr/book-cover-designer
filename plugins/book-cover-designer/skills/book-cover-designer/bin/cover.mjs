@@ -147,9 +147,19 @@ function normalizeModel(provider, model) {
 
 function sizeForAspect(provider, aspect) {
   if (provider === "gemini") return null; // aspect passed in config
-  const map = { "1.6:1": "1536x1024", "3:2": "1536x1024", "4:3": "1024x768", "1:1": "1024x1024", "2:3": "1024x1536", "9:16": "1024x1536" };
+  // Book covers are PORTRAIT: height > width. 1.6:1 = H:W (1600x2560 master).
+  const map = {
+    "1.6:1": "1024x1536", // 2:3 portrait (nearest to 1.6:1 H:W)
+    "2:3": "1024x1536",
+    "9:16": "1024x1536",
+    "3:4": "1024x1366",
+    "1:1": "1024x1024",
+    "4:3": "1024x768",
+    "3:2": "1024x683",
+  };
   return map[aspect] || map["1.6:1"];
 }
+
 
 async function generateOpenAiLike(provider, { model, prompt, count, aspect, refs }) {
   const base = provider === "xai" ? "https://api.x.ai" : provider === "openrouter" ? "https://openrouter.ai/api" : "https://api.openai.com";
@@ -192,7 +202,7 @@ async function generateGemini({ model, prompt, count, aspect, refs }) {
     contents: [{ role: "user", parts }],
     generationConfig: {
       responseModalities: ["IMAGE"],
-      imageConfig: { aspectRatio: aspect === "1:1" ? "1:1" : aspect === "2:3" || aspect === "9:16" ? "3:4" : "4:3", imageSize: "1K" },
+      imageConfig: { aspectRatio: aspect === "1:1" ? "1:1" : "3:4", imageSize: "1K" },
     },
   };
   // count > 1: loop sequentially; Gemini returns one image per call

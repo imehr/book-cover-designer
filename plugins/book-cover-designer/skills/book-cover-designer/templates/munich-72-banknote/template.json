@@ -1,0 +1,42 @@
+{
+  "id": "munich-72-banknote",
+  "version": 1,
+  "name": "Munich 72 Banknote Security",
+  "kind": "illustrated",
+  "description": "Munich 1972 Swiss modernist x banknote security-print cover. Cream central panel framed by orange/cyan/lime/gray bordered color blocks; nested-arc rainbow semicircular line-art motif near the top; dense moire/lattice interlaced wave band in the lower half. Extracted from style-01 reference set. Portrait 1.6:1 / 2:3.",
+  "layout": {
+    "composition": "Cream/off-white central panel occupying most of the canvas, framed by segmented bordered color blocks (orange, cyan, lime, gray). Nested-arc rainbow semicircular line-art motif just below the top tool line. Moire/lattice interlaced wave band spanning the lower half above the author block.",
+    "margins": "10% safe zone; tool line at top center; author + edition at bottom center over the moire band",
+    "safeZone": 0.1
+  },
+  "typography": {
+    "classification": "Swiss neo-grotesque / geometric sans",
+    "families": ["Helvetica", "Univers"],
+    "hierarchy": "Title largest navy display 'Open Design'; subtitle centered two lines; author + edition smaller bottom"
+  },
+  "palette": {
+    "colors": ["cream #F2F3EF", "signal orange #F58D22", "cyan #2BA5B8", "lime #8BD12F", "gray #E7E8EA", "indigo #505A9B", "ink #1E2C32", "yellow #F4D000", "lavender #C2BADE"],
+    "contrast": "navy/ink display type on cream; color blocks frame the cream panel"
+  },
+  "prompt": {
+    "art": "Munich 1972 Swiss modernist book cover, PORTRAIT. A large cream/off-white central panel framed by segmented bordered color blocks in signal orange, cyan, lime green, and pale gray. Near the top of the cream panel, a detailed black-and-gray line-art semiconircular nested-arc / rainbow motif built from dense crosshatched curves. The lower half of the cream panel carries a large intricate field of thin gray curving lines forming repeated overlapping wave, diamond, eye, and lattice shapes in horizontal bands (woven / moire). NO watermark, NO logo, NO signature. Palette: cream, orange, cyan, lime, gray, indigo, ink, yellow, lavender. Genre: {genre}.",
+    "negative": "no watermark, no logo, no signature, no 'Grok', no text attribution, no stadium, no ticket, no people, no photos, no 3D, no gradients, no drop shadows, no mint/dark-green dominance, no Olympic rings, no '1972'",
+    "roleRefs": "Use the reference images as the banknote texture + Munich palette + composition authority. Copy the guilloche oval lattice and engraved line-density textures, the bordered color-block frame, and the cream central panel. Do not copy subjects or add watermarks."
+  },
+  "references": [
+    {"file": "ref-06.jpg", "role": "style", "note": "segmented ticket: cream/gray/white/color bands, radial emblem, banknote textures"},
+    {"file": "ref-05.jpg", "role": "style", "note": "stepped pass stack: bordered color cards"},
+    {"file": "ref-08.jpg", "role": "style", "note": "ticket: bordered color zones, interlocked security ring pattern"},
+    {"file": "ref-07.jpg", "role": "style", "note": "calendar: color-coded modules, micro-index"}
+  ],
+  "provider": {
+    "preferred": ["gemini", "openrouter", "openai", "xai"],
+    "defaultModel": "gemini-3.1-flash-image-preview",
+    "aspect": "1.6:1"
+  },
+  "provenance": {
+    "createdBy": "book-cover-designer skill (from Grok v4 option-05)",
+    "createdAt": "2026-08-12T00:00:00Z",
+    "source": "Derived from style-01 reference set; approved by user"
+  }
+}
